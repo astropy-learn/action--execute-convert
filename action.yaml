@@ -31,20 +31,22 @@ runs:
       
     - name: Use Jupyterbook to execute notebook and convert to HTML
       shell: bash
-      run: jupyter-book build *.ipynb
+      run: jb build *.ipynb
+           cp _build/_page/*/html html
 
     - name: Upload the converted notebook as an artifact
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: converted_notebook
-        path: converted.html
+        name: html_build
+        path: html
 
     - name: Push converted notebook HTML to 'converted' branch
       if: ${{ github.ref == 'refs/heads/main' }}
       uses: JamesIves/github-pages-deploy-action@v4.6.4
       with:
         branch: converted
-        folder: "./_build/html"
+        # folder: "_build/html"
+        folder: "html"
         single-commit: true
         clean: true
