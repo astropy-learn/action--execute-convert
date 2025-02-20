@@ -27,7 +27,7 @@ runs:
     # Execute and convert notebook
     - name: Install
       shell: bash
-      run: pip install .
+      run: pip install -r requirements.txt
       
     - name: Use Jupyterbook to execute notebook and convert to HTML
       shell: bash
