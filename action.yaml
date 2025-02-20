@@ -21,10 +21,12 @@ runs:
         python-version: ${{ inputs.python-version }}
 
     - name: Display Python version
+      shell: bash
       run: python -c "import sys; print(sys.version)"
       
     # Execute and convert notebook
     - name: Install
+      shell: bash
       run: pip install .
       
     - name: Use Jupyterbook to execute notebook and convert to HTML
