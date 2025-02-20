@@ -33,7 +33,7 @@ runs:
       shell: bash
       run: | 
         jb build *.ipynb
-        cp _build/_page/*/html html
+        cp -r _build/_page/*/html html
 
     - name: Upload the converted notebook as an artifact
       uses: actions/upload-artifact@v4
