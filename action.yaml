@@ -31,8 +31,9 @@ runs:
       
     - name: Use Jupyterbook to execute notebook and convert to HTML
       shell: bash
-      run: jb build *.ipynb
-           cp _build/_page/*/html html
+      run: | 
+        jb build *.ipynb
+        cp _build/_page/*/html html
 
     - name: Upload the converted notebook as an artifact
       uses: actions/upload-artifact@v4
