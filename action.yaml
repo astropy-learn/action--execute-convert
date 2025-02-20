@@ -40,11 +40,11 @@ runs:
         name: converted_notebook
         path: converted.html
 
-    - name: Push converted notebook to 'converted' branch
+    - name: Push converted notebook HTML to 'converted' branch
       if: ${{ github.ref == 'refs/heads/main' }}
       uses: JamesIves/github-pages-deploy-action@v4.6.4
       with:
         branch: converted
-        folder: "."
+        folder: "./_build/html"
         single-commit: true
         clean: true
