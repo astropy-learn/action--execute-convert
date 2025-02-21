@@ -25,17 +25,17 @@ runs:
       run: python -c "import sys; print(sys.version)"
       
     # Execute and convert notebook
-    - name: Install
+    - name: Install notebook requirements
       shell: bash
       run: pip install -r requirements.txt
       
     - name: Use Jupyterbook to execute notebook and convert to HTML
       shell: bash
       run: | 
-        jb build *.ipynb
+        jb build *.ipynb --config _config.yml
         cp -r _build/_page/*/html html
 
-    - name: Upload the converted notebook as an artifact
+    - name: Upload converted notebook as an artifact
       uses: actions/upload-artifact@v4
       if: always()
       with:
