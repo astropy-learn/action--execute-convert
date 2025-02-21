@@ -25,9 +25,11 @@ runs:
       run: python -c "import sys; print(sys.version)"
       
     # Execute and convert notebook
-    - name: Install notebook requirements
+    - name: Install notebook and build requirements
       shell: bash
-      run: pip install -r requirements.txt
+      run: | 
+        pip install -r requirements.txt
+        pip install jupyter-book
       
     - name: Use Jupyterbook to execute notebook and convert to HTML
       shell: bash
