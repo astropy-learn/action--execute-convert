@@ -29,8 +29,7 @@ runs:
       shell: bash
       run: | 
         pip install -r requirements.txt
-        pip install jupyter-book
-        pip install pyppeteer
+        pip install -r requirements-dev.txt
       
     - name: Use Jupyterbook to execute notebook and convert to HTML
       shell: bash
