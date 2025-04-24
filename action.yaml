@@ -6,13 +6,7 @@ inputs:
   python-version:
     type: string
     default: "3.12"
-  tutorial-title:
-    type: string
-    required: true
   tutorial-slug:
-    type: string
-    required: true
-  tutorial-source:
     type: string
     required: true
 
@@ -44,9 +38,9 @@ runs:
     - name: Use Jupyterbook to execute notebook, convert to HTML, generate pdf
       shell: bash
       run: | 
-        jb build ${{ inputs.tutorial-slug }}.ipynb --config _config.yaml --builder pdfhtml
-        cp -r _build/_page/*/html html
-        cp _build/_page/*/pdf/*.pdf html
+        jb build "${{ inputs.tutorial-slug }}".ipynb --config _config.yaml --builder pdfhtml
+        cp -r "_build/_page/${{ inputs.tutorial-slug }}/html" html
+        cp "_build/_page/${{ inputs.tutorial-slug }}/pdf/${{ inputs.tutorial-slug }}.pdf" html
 
     # - name: Upload converted notebook as an artifact
     #   uses: actions/upload-artifact@v4
