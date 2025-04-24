@@ -13,6 +13,11 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Enforce tutorial-slug input
+      shell: bash
+      run: |
+        [[ "${{ inputs.tutorial-slug }}" ]] || { echo "inputs.tutorial-slug input is empty" ; exit 1; }
+
     - name: Checkout
       uses: actions/checkout@v4
       with:
