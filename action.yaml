@@ -31,7 +31,7 @@ runs:
         pip install -r requirements.txt
         pip install -r requirements-dev.txt
       
-    - name: Use Jupyterbook to execute notebook and convert to HTML
+    - name: Use Jupyterbook to execute notebook, convert to HTML, generate pdf
       shell: bash
       run: | 
         jb build *.ipynb --config _config.yaml --builder pdfhtml
