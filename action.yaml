@@ -1,11 +1,20 @@
 # This workflow is called in the 'tutorial--*' repositories to execute each
-# Jupyter notebook and convert the output to HTML.
+# Jupyter notebook and convert the output to .html and .pdf.
 name: 'Execute and convert notebook'
 
 inputs:
   python-version:
     type: string
     default: "3.12"
+  tutorial-title:
+    type: string
+    required: true
+  tutorial-slug:
+    type: string
+    required: true
+  tutorial-source:
+    type: string
+    required: true
 
 runs:
   using: "composite"
