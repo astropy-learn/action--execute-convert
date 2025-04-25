@@ -33,7 +33,8 @@ runs:
       run: | 
         pip install -r requirements.txt
         pip install -r astropy-tutorials/requirements-dev.txt
-        playwright install 
+        playwright install
+        playwright install-deps 
 
     - name: Copy logo, print diagnostics
       shell: bash
