@@ -45,8 +45,9 @@ runs:
     - name: Use Jupyterbook to execute notebook, convert to HTML, generate pdf
       shell: bash
       run: | 
-        jb build "${{ inputs.tutorial-slug }}".ipynb --config _config.yaml --builder pdfhtml
+        jb build "${{ inputs.tutorial-slug }}".ipynb --config _config.yaml
         cp -r "_build/_page/${{ inputs.tutorial-slug }}/html" html
+        jb build "${{ inputs.tutorial-slug }}".ipynb --config _config.yaml --builder pdfhtml
         cp "_build/_page/${{ inputs.tutorial-slug }}/pdf/${{ inputs.tutorial-slug }}.pdf" html
 
     # - name: Upload converted notebook as an artifact
