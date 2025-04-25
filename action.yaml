@@ -23,6 +23,13 @@ runs:
       with:
         clean: false
 
+    - name: Cache playwright modules
+      id: cache-playwright
+      uses: actions/cache@v4
+      with:
+        path: .cache/ms-playwright
+        key: ${{ runner.os }}-playwright
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
