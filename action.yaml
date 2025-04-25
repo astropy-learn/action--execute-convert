@@ -18,7 +18,7 @@ runs:
       run: |
         [[ "${{ inputs.tutorial-slug }}" ]] || { echo "inputs.tutorial-slug is empty" ; exit 1; }
 
-    - name: Checkout
+    - name: Check out
       uses: actions/checkout@v4
       with:
         clean: false
@@ -42,6 +42,10 @@ runs:
     - name: Use Jupyterbook to execute notebook, convert to HTML, generate pdf
       shell: bash
       run: | 
+        echo "location 1"
+        echo "$(cat astropy-tutorials/scripts/_config.yaml)"
+        echo "location 2"
+        echo "$(cat _config.yaml)"
         jb build "${{ inputs.tutorial-slug }}".ipynb --config _config.yaml --builder pdfhtml
         cp -r "_build/_page/${{ inputs.tutorial-slug }}/html" html
         cp "_build/_page/${{ inputs.tutorial-slug }}/pdf/${{ inputs.tutorial-slug }}.pdf" html
