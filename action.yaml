@@ -34,14 +34,13 @@ runs:
         pip install -r requirements.txt
         pip install -r astropy-tutorials/requirements-dev.txt
         playwright install
-        playwright install-deps 
 
     - name: Copy logo, print diagnostics
       shell: bash
       run: | 
         cp astropy-tutorials/images/logo.svg .
-        echo "Template config file (in astropy-tutorials):\n$(cat astropy-tutorials/scripts/_config.yaml)"
-        echo "Populated config file (local):\n$(cat _config.yaml)"
+        echo "Template config file (in astropy-tutorials): $(cat astropy-tutorials/scripts/_config.yaml)"
+        echo "Populated config file (local): $(cat _config.yaml)"
 
     - name: Use Jupyterbook to execute notebook, convert to HTML, generate pdf
       shell: bash
