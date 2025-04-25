@@ -27,10 +27,6 @@ runs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
-
-    - name: Display Python version
-      shell: bash
-      run: python -c "import sys; print(sys.version)"
       
     - name: Install notebook and build requirements
       shell: bash
@@ -39,13 +35,16 @@ runs:
         pip install -r astropy-tutorials/requirements-dev.txt
         playwright install 
 
+    - name: Copy logo, print diagnostics
+      shell: bash
+      run: | 
+        cp astropy-tutorials/images/logo.svg .
+        echo "Template config file (in astropy-tutorials):\n$(cat astropy-tutorials/scripts/_config.yaml)"
+        echo "Populated config file (local):\n$(cat _config.yaml)"
+
     - name: Use Jupyterbook to execute notebook, convert to HTML, generate pdf
       shell: bash
       run: | 
-        echo "location 1"
-        echo "$(cat astropy-tutorials/scripts/_config.yaml)"
-        echo "location 2"
-        echo "$(cat _config.yaml)"
         jb build "${{ inputs.tutorial-slug }}".ipynb --config _config.yaml --builder pdfhtml
         cp -r "_build/_page/${{ inputs.tutorial-slug }}/html" html
         cp "_build/_page/${{ inputs.tutorial-slug }}/pdf/${{ inputs.tutorial-slug }}.pdf" html
