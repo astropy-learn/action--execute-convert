@@ -39,15 +39,15 @@ runs:
       shell: bash
       run: | 
         cp astropy-tutorials/images/logo.svg .
-        echo "Template config file (in astropy-tutorials): $(cat astropy-tutorials/scripts/_config.yaml)"
-        echo "Populated config file (local): $(cat _config.yaml)"
+        echo "Template config file (in astropy-tutorials): $(cat astropy-tutorials/scripts/_config.yml)"
+        echo "Populated config file (local): $(cat _config.yml)"
 
     - name: Use Jupyterbook to execute notebook, convert to HTML, generate pdf
       shell: bash
       run: | 
-        jb build "${{ inputs.tutorial-slug }}".ipynb --config _config.yaml
+        jb build "${{ inputs.tutorial-slug }}".ipynb --config _config.yml
         cp -r "_build/_page/${{ inputs.tutorial-slug }}/html" html
-        jb build "${{ inputs.tutorial-slug }}".ipynb --config _config.yaml --builder pdfhtml
+        jb build "${{ inputs.tutorial-slug }}".ipynb --config _config.yml --builder pdfhtml
         cp "_build/_page/${{ inputs.tutorial-slug }}/pdf/${{ inputs.tutorial-slug }}.pdf" html
 
     # - name: Upload converted notebook as an artifact
