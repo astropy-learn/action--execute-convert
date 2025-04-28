@@ -5,7 +5,7 @@ name: 'Execute and convert notebook'
 inputs:
   python-version:
     type: string
-    default: "3.12"
+    required: true
   tutorial-slug:
     type: string
     required: true
