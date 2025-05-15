@@ -51,7 +51,7 @@ runs:
 
     - name: Use Jupyterbook to execute notebook, convert to HTML, generate pdf
       shell: bash
-      run: python astropy-tutorials/scripts/build_notebook.py ${{ inputs.tutorial-slug }}
+      run: python astropy-tutorials/scripts/execute-convert.py ${{ inputs.tutorial-slug }}
 
     - name: Upload converted notebook as an artifact
       uses: actions/upload-artifact@v4
