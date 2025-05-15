@@ -53,19 +53,18 @@ runs:
       shell: bash
       run: python astropy-tutorials/scripts/build_notebook.py ${{ inputs.tutorial-slug }}
 
-
-    # - name: Upload converted notebook as an artifact
-    #   uses: actions/upload-artifact@v4
-    #   if: always()
-    #   with:
-    #     name: html_build
-    #     path: html
-
-    - name: Push converted notebook files to 'converted' branch
-      if: ${{ github.ref == 'refs/heads/main' }}
-      uses: JamesIves/github-pages-deploy-action@v4.6.4
+    - name: Upload converted notebook as an artifact
+      uses: actions/upload-artifact@v4
+      if: always()
       with:
-        branch: converted
-        folder: "html"
-        single-commit: true
-        clean: true
+        name: html_build
+        path: html
+
+    # - name: Push converted notebook files to 'converted' branch
+    #   if: ${{ github.ref == 'refs/heads/main' }}
+    #   uses: JamesIves/github-pages-deploy-action@v4.6.4
+    #   with:
+    #     branch: converted
+    #     folder: "html"
+    #     single-commit: true
+    #     clean: true
