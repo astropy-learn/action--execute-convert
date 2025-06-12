@@ -60,11 +60,11 @@ runs:
         name: html_build
         path: html
 
-    # - name: Push converted notebook files to 'converted' branch
-    #   if: ${{ github.ref == 'refs/heads/main' }}
-    #   uses: JamesIves/github-pages-deploy-action@v4.6.4
-    #   with:
-    #     branch: converted
-    #     folder: "html"
-    #     single-commit: true
-    #     clean: true
+    - name: Push converted notebook files to 'converted' branch
+      if: ${{ github.ref == 'refs/heads/main' }}
+      uses: JamesIves/github-pages-deploy-action@v4.6.4
+      with:
+        branch: converted
+        folder: "html"
+        single-commit: true
+        clean: true
