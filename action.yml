@@ -34,11 +34,6 @@ runs:
         pip install -r requirements.txt
         pip install -r astropy-tutorials/requirements-dev.txt
         playwright install
-      
-    - name: Install pre-commit
-      shell: bash
-      run: |       
-        cp astropy-tutorials/.pre-commit-config.yaml .
         pre-commit install
 
     - name: Copy logo, print diagnostics
