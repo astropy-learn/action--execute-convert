@@ -39,10 +39,10 @@ runs:
     - name: Copy logo, print diagnostics
       shell: bash
       run: | 
-        cp astropy-tutorials/images/logo.svg .       
-        echo "Template config file (in astropy-tutorials): $(cat astropy-tutorials/_config.yml)"
+        cp astropy-tutorials/images/logo.svg .
         echo "Populated config file (local): $(cat _config.yml)"
         echo "Generated table of contents file (only needed if building a book): $(cat _toc.yml)"
+        echo tree -L 3
 
     - name: Cache executed notebook(s)
       uses: actions/cache@v4
