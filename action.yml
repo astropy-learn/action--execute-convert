@@ -40,9 +40,9 @@ runs:
       shell: bash
       run: | 
         cp astropy-tutorials/images/logo.svg .
-        echo "Populated config file (local): $(cat _config.yml)"
-        echo "Generated table of contents file (only needed if building a book): $(cat _toc.yml)"
-        echo "tree: $(tree -L 3)"
+        echo -e "Populated config file (local):\n$(cat _config.yml)"
+        echo -e "Table of contents file (only needed if building a book):\n$(cat _toc.yml)"
+        echo -e "tree:\n$(tree -L 3)"
 
     - name: Cache executed notebook(s)
       uses: actions/cache@v4
