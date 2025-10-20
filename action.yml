@@ -33,7 +33,6 @@ runs:
       run: | 
         pip install -r requirements.txt
         pip install -r astropy-tutorials/requirements-dev.txt
-        playwright install
         pre-commit install
 
     - name: Copy logo, print diagnostics
