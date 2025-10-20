@@ -1,5 +1,5 @@
 # This workflow is called in the 'tutorial--*' repositories to execute each
-# Jupyter notebook and convert the output to .html and .pdf.
+# Jupyter notebook and convert the output to .html.
 name: 'Execute and convert notebook'
 
 inputs:
@@ -49,7 +49,7 @@ runs:
         path: _build/.jupyter_cache
         key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
 
-    - name: Use Jupyterbook to execute notebook, convert to HTML, generate pdf
+    - name: Use Jupyterbook to execute notebook, convert to HTML
       shell: bash
       run: python astropy-tutorials/scripts/execute-convert.py ${{ inputs.tutorial-slug }}
 
