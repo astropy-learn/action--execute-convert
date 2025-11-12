@@ -27,17 +27,17 @@ runs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
-      
+
     - name: Install notebook and build requirements
       shell: bash
-      run: | 
+      run: |
         pip install -r requirements.txt
         pip install -r astropy-tutorials/requirements-dev.txt
         pre-commit install
 
     - name: Copy logo, print diagnostics
       shell: bash
-      run: | 
+      run: |
         cp astropy-tutorials/images/logo.svg .
         echo -e "Populated config file (local):\n$(cat _config.yml)"
         echo -e "Table of contents file (only needed if building a book):\n$(cat _toc.yml)"
